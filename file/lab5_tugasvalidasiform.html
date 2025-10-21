@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Validasi Form</title>
+    <script language="javascript">
+        function validasi() {
+            var nama = document.forms["form_validasi"]["nama"].value;
+            var email = document.forms["form_validasi"]["email"].value;
+            var pesan = document.forms["form_validasi"]["pesan"].value;
+
+            if (nama == "") {
+                alert("Nama tidak boleh kosong!");
+                document.forms["form_validasi"]["nama"].focus();
+                return false;
+            }
+
+            if (email == "") {
+                alert("Email tidak boleh kosong!");
+                document.forms["form_validasi"]["email"].focus();
+                return false;
+            }
+
+            var pola_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!pola_email.test(email)) {
+                alert("Format email tidak valid!");
+                document.forms["form_validasi"]["email"].focus();
+                return false;
+            }
+
+            if (pesan == "") {
+                alert("Pesan tidak boleh kosong!");
+                document.forms["form_validasi"]["pesan"].focus();
+                return false;
+            }
+
+            alert("Form berhasil dikirim!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h3>Form Validasi JavaScript</h3>
+    <form name="form_validasi" onsubmit="return validasi()">
+        Nama: <input type="text" name="nama"><br><br>
+        Email: <input type="text" name="email"><br><br>
+        Pesan: <textarea name="pesan" rows="4" cols="30"></textarea><br><br>
+        <input type="submit" value="Kirim">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
